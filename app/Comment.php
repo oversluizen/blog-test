@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Comments extends Model
+class Comment extends Model
 {
     public function post()
     {
