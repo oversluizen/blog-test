@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+
 class PostsController extends Controller
 {
     public function index()
@@ -12,5 +14,19 @@ class PostsController extends Controller
     public function show()
     {
         return view('posts.show');
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store()
+    {
+        // Create a new post using the request data
+        Post::create(request(['title', 'body']));
+
+        // redirect to the homepage
+        return redirect('/');
     }
 }
