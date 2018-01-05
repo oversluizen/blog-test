@@ -12,7 +12,7 @@
                 @foreach ($post->comments as $comment)
                     <li class="list-group-item">
                         <strong>
-                            {{ $comment->created_at->diffForHumans() }}: &nbsp
+                            {{ $comment->created_at->diffForHumans() }} by {{ $comment->user->name }}: &nbsp
                         </strong>
                         {{ $comment->body }}
                     </li>
@@ -25,6 +25,7 @@
 
         <hr>
 
+        @if (Auth::check())
         <div class="card">
             <div class="card-block">
                 <form action="/posts/{{ $post->id }}/comments" method="post">
@@ -43,6 +44,14 @@
                 </form>
             </div>
         </div>
-
+        @endif
+        
+        @if (!Auth::check())
+        <div class="card">
+            <div class="card-block">
+                <p class="blog-post-meta">To make a comment: <a href="/login">Log in</a></p>
+            </div>
+        </div>
+        @endif
     </div>
 @endsection

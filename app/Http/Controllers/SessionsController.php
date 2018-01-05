@@ -21,13 +21,13 @@ class SessionsController extends Controller
                 'message' => 'Please check your credentials'
             ]);
         }
-        return redirect()->home();
+        return back();
     }
 
     public function destroy()
     {
         auth()->logout();
 
-        return redirect()->home();
+        return back();
     }
 }
