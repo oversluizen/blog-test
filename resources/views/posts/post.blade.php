@@ -3,8 +3,13 @@
                 <a href="/posts/{{ $post->id}}">{{ $post->title }}</a>
             </h2>
 
-            <p class="blog-post-meta"> {{ $post->updated_at->toFormattedDateString() }} </p>
+            <p class="blog-post-meta"> 
+                {{ $post->user->name }} on 
+                {{ $post->updated_at->toFormattedDateString() }} 
+            </p>
+            
             <hr>
+            
             <p> {{ $post->body }}</p>
             
           </div><!-- /.blog-post -->
