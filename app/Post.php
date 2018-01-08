@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 // no use of Illuminate\Database\Eloquent\Model as we use our own Model...
 class Post extends Model
 {
@@ -21,5 +22,17 @@ class Post extends Model
             'body' => $body, 
             'user_id' => $user_id
         ]);
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        if ($month = $filters['month']){
+            $query->whereMonth('created_at', Carbon::parse($month)->month);
+        }
+
+        if ($year = $filters['year']){
+            $query->whereYear('created_at', $year);
+        }
+
     }
 }
