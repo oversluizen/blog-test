@@ -5,7 +5,7 @@
 
             <p class="blog-post-meta"> 
                 {{ $post->user->name }} on 
-                {{ $post->updated_at->toFormattedDateString() }} 
+                {{ $post->created_at->toFormattedDateString() }} 
             </p>
             
             <hr>
