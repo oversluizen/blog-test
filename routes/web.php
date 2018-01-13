@@ -1,6 +1,12 @@
 <?php
 
-use App\Http\Controllers\PostsController;
+App::singleton('App\Billing\Stripe', function () {
+    return new \App\Billing\Stripe(config('services.stripe.secret'));
+});
+
+$stripe = resolve('App\Billing\Stripe');
+
+dd($stripe);
 
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/home', 'PostsController@index')->name('home');
