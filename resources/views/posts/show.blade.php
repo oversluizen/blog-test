@@ -4,7 +4,18 @@
     <div class="col-sm-8 blog-main">
         <h1> {{ $post->title }}</h1>
         <p class="blog-post-meta">{{ $post->user->name }} on  {{ $post->updated_at->toFormattedDateString() }}</p>
+        
+        @if (count($post->tags))
+            <nav class="blog-pagination">
+                @foreach ($post->tags as $tag)
+                        <a class="btn btn-outline-primary" href="/posts/tags/{{ $tag->name }}">
+                            {{ $tag->name }}
+                        </a> 
+                @endforeach
+            </nav>
+        @endif
         <hr>
+
         <p>{{ $post->body }}</p>
 
         <div class="comments">
