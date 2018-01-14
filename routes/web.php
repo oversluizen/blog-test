@@ -1,5 +1,7 @@
 <?php
 
+// use App\Http\PostsController;
+
 
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/home', 'PostsController@index')->name('home');
