@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use App\Tag;
 // no use of Illuminate\Database\Eloquent\Model as we use our own Model...
 class Post extends Model
 {
@@ -49,5 +50,10 @@ class Post extends Model
             // ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();;
+    }
+
+    public function tags()
+    {
+       return $this->belongsToMany(Tag::class);
     }
 }
